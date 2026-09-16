@@ -1,0 +1,6 @@
+{
+  "name": "Aegis AI - Spacecraft Component Diagnostics",
+  "description": "Real-time AURA diagnostic monitoring system for spacecraft electrical networks, cable connections, chamber monitoring (Chamber A to H), thermal telemetry, current leakages, and short-circuit risk prevention.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

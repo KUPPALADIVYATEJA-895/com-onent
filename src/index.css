@@ -1,0 +1,426 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #2B303A;
+    color: #EAD7C3;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* ==========================================================================
+   THEME PALETTE TOKENS
+   - 3. The Industrial Studio (Slate Blue-Grey #2B303A & Warm Sand #EAD7C3 & Muted Orange #E28743)
+   - Mission Control (Obsidian #070B12 & Deep Space Blue #3B82F6 / Cyan #06B6D4)
+   ========================================================================== */
+
+:root, [data-theme="industrial-studio"] {
+  --bg-app: #2B303A;
+  --bg-card: #222730;
+  --bg-card-header: #1C2028;
+  --bg-card-subtle: #191D24;
+  --border-card: #3D4554;
+  --border-card-subtle: #303744;
+  --text-heading: #F5EBE1;
+  --text-primary: #EAD7C3;
+  --text-secondary: #C8B6A2;
+  --text-muted: #8E99A8;
+  --accent-orange: #E28743;
+  --accent-orange-hover: #F09452;
+  --accent-sand: #EAD7C3;
+  --accent-sand-subtle: rgba(234, 215, 195, 0.12);
+  --electric-wire: #E28743;
+}
+
+[data-theme="mission-control"] {
+  --bg-app: #070B12;
+  --bg-card: #131926;
+  --bg-card-header: #0F141F;
+  --bg-card-subtle: #0A0E17;
+  --border-card: #232F42;
+  --border-card-subtle: #1A2332;
+  --text-heading: #FFFFFF;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent-orange: #3B82F6;
+  --accent-orange-hover: #2563EB;
+  --accent-sand: #38BDF8;
+  --accent-sand-subtle: rgba(56, 189, 248, 0.12);
+  --electric-wire: #38BDF8;
+}
+
+[data-theme="tactical-hazard"] {
+  --bg-app: #0A0A0B;
+  --bg-card: #121215;
+  --bg-card-header: #0C0C0E;
+  --bg-card-subtle: #080809;
+  --border-card: #26262E;
+  --border-card-subtle: #1C1C22;
+  --text-heading: #FFFFFF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E2E8F0;
+  --text-muted: #94A3B8;
+  --accent-orange: #FACC15;
+  --accent-orange-hover: #EAB308;
+  --accent-sand: #FFFFFF;
+  --accent-sand-subtle: rgba(250, 204, 21, 0.15);
+  --electric-wire: #FACC15;
+}
+
+/* ==========================================================================
+   TELEMETRY BACKGROUND GRIDS
+   ========================================================================== */
+
+/* The Industrial Studio: Matte Slate with Warm Sand dot matrix & acoustic engineering grid */
+[data-theme="industrial-studio"] .telemetry-bg-grid {
+  background-color: #2B303A;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(226, 135, 67, 0.09) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(234, 215, 195, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(234, 215, 195, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 215, 195, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+}
+
+/* Mission Control: Deep Obsidian Space with electric blue grid */
+[data-theme="mission-control"] .telemetry-bg-grid {
+  background-color: #070B12;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Tactical Hazard: Pitch Black with high-voltage safety yellow hazard grid & ambient light */
+[data-theme="tactical-hazard"] .telemetry-bg-grid {
+  background-color: #0A0A0B;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(250, 204, 21, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+    linear-gradient(rgba(250, 204, 21, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 204, 21, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+}
+
+/* ==========================================================================
+   INDUSTRIAL STUDIO THEME REFINEMENT RULES
+   Tactile audio engineering hardware & physical synthesizer aesthetics
+   ========================================================================== */
+
+[data-theme="industrial-studio"] .app-main-container {
+  background-color: #2B303A !important;
+  color: #EAD7C3 !important;
+}
+
+/* Card surfaces -> Matte Slate with tactile beveled borders */
+[data-theme="industrial-studio"] .bg-\[\#131926\] {
+  background-color: #222730 !important;
+  border-color: #3D4554 !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(234, 215, 195, 0.04) !important;
+}
+
+[data-theme="industrial-studio"] .border-\[\#232f42\],
+[data-theme="industrial-studio"] .border-\[\#212e42\] {
+  border-color: #3D4554 !important;
+}
+
+/* Inner wells, monitor screens, and dark slots */
+[data-theme="industrial-studio"] .bg-\[\#0f141f\],
+[data-theme="industrial-studio"] .bg-\[\#0b101b\],
+[data-theme="industrial-studio"] .bg-\[\#121a28\],
+[data-theme="industrial-studio"] .bg-\[\#141d2b\],
+[data-theme="industrial-studio"] .bg-\[\#182030\],
+[data-theme="industrial-studio"] .bg-\[\#161d2b\] {
+  background-color: #191D24 !important;
+  border-color: #333A47 !important;
+}
+
+[data-theme="industrial-studio"] .bg-\[\#1b2332\] {
+  background-color: #2A303D !important;
+  border-color: #3D4554 !important;
+}
+
+/* Text Hierarchy: Warm Birch Sand & Ivory */
+[data-theme="industrial-studio"] .text-slate-100,
+[data-theme="industrial-studio"] .text-white {
+  color: #F5EBE1 !important;
+}
+
+[data-theme="industrial-studio"] .text-slate-200,
+[data-theme="industrial-studio"] .text-slate-300 {
+  color: #EAD7C3 !important;
+}
+
+[data-theme="industrial-studio"] .text-slate-400 {
+  color: #C8B6A2 !important;
+}
+
+[data-theme="industrial-studio"] .text-slate-500 {
+  color: #8E99A8 !important;
+}
+
+/* Primary Accents -> Structural Muted Orange #E28743 */
+[data-theme="industrial-studio"] .bg-blue-600 {
+  background-color: #E28743 !important;
+  color: #1B1E26 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="industrial-studio"] .hover\:bg-blue-500:hover {
+  background-color: #F09452 !important;
+}
+
+[data-theme="industrial-studio"] .from-blue-600.to-cyan-600 {
+  --tw-gradient-from: #E28743 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: #EAD7C3 var(--tw-gradient-to-position) !important;
+  color: #1B1E26 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="industrial-studio"] .text-blue-400,
+[data-theme="industrial-studio"] .text-cyan-400 {
+  color: #E28743 !important;
+}
+
+[data-theme="industrial-studio"] .text-blue-300,
+[data-theme="industrial-studio"] .text-cyan-300 {
+  color: #EAD7C3 !important;
+}
+
+[data-theme="industrial-studio"] .bg-blue-600\/15 {
+  background-color: rgba(226, 135, 67, 0.16) !important;
+  color: #E28743 !important;
+}
+
+[data-theme="industrial-studio"] .border-blue-500\/30,
+[data-theme="industrial-studio"] .border-blue-500\/40,
+[data-theme="industrial-studio"] .border-blue-500 {
+  border-color: rgba(226, 135, 67, 0.45) !important;
+}
+
+[data-theme="industrial-studio"] .bg-blue-950\/80,
+[data-theme="industrial-studio"] .bg-blue-950\/40 {
+  background-color: #2D333F !important;
+  border-color: #E28743 !important;
+  color: #EAD7C3 !important;
+}
+
+/* Tactile Range Sliders */
+[data-theme="industrial-studio"] input[type="range"] {
+  accent-color: #E28743 !important;
+}
+
+/* Custom Scrollbars for Industrial Rack Feel */
+[data-theme="industrial-studio"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+[data-theme="industrial-studio"] ::-webkit-scrollbar-track {
+  background: #1E232B;
+}
+[data-theme="industrial-studio"] ::-webkit-scrollbar-thumb {
+  background: #3D4554;
+  border-radius: 4px;
+}
+[data-theme="industrial-studio"] ::-webkit-scrollbar-thumb:hover {
+  background: #E28743;
+}
+
+/* ==========================================================================
+   TACTICAL HAZARD THEME REFINEMENT RULES
+   High-contrast Pitch Black (#0A0A0B), Safety Yellow (#FACC15), Crisp White (#FFFFFF)
+   ========================================================================== */
+
+[data-theme="tactical-hazard"] .app-main-container {
+  background-color: #0A0A0B !important;
+  color: #FFFFFF !important;
+}
+
+/* Card surfaces -> Jet black with razor-clean tactical borders */
+[data-theme="tactical-hazard"] .bg-\[\#131926\] {
+  background-color: #121215 !important;
+  border-color: #26262E !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(250, 204, 21, 0.08) !important;
+}
+
+[data-theme="tactical-hazard"] .border-\[\#232f42\],
+[data-theme="tactical-hazard"] .border-\[\#212e42\] {
+  border-color: #26262E !important;
+}
+
+/* Inner wells, monitor screens, and dark slots */
+[data-theme="tactical-hazard"] .bg-\[\#0f141f\],
+[data-theme="tactical-hazard"] .bg-\[\#0b101b\],
+[data-theme="tactical-hazard"] .bg-\[\#121a28\],
+[data-theme="tactical-hazard"] .bg-\[\#141d2b\],
+[data-theme="tactical-hazard"] .bg-\[\#182030\],
+[data-theme="tactical-hazard"] .bg-\[\#161d2b\] {
+  background-color: #09090C !important;
+  border-color: #1F1F26 !important;
+}
+
+[data-theme="tactical-hazard"] .bg-\[\#1b2332\] {
+  background-color: #181820 !important;
+  border-color: #2A2A35 !important;
+}
+
+/* Text Hierarchy: Pure White & Crisp Silver */
+[data-theme="tactical-hazard"] .text-slate-100,
+[data-theme="tactical-hazard"] .text-white {
+  color: #FFFFFF !important;
+}
+
+[data-theme="tactical-hazard"] .text-slate-200,
+[data-theme="tactical-hazard"] .text-slate-300 {
+  color: #F8FAFC !important;
+}
+
+[data-theme="tactical-hazard"] .text-slate-400 {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="tactical-hazard"] .text-slate-500 {
+  color: #94A3B8 !important;
+}
+
+/* Primary Accents -> High-Voltage Safety Yellow #FACC15 */
+[data-theme="tactical-hazard"] .bg-blue-600 {
+  background-color: #FACC15 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="tactical-hazard"] .hover\:bg-blue-500:hover {
+  background-color: #EAB308 !important;
+  color: #000000 !important;
+}
+
+[data-theme="tactical-hazard"] .from-blue-600.to-cyan-600 {
+  --tw-gradient-from: #FACC15 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: #FFFFFF var(--tw-gradient-to-position) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="tactical-hazard"] .text-blue-400,
+[data-theme="tactical-hazard"] .text-cyan-400 {
+  color: #FACC15 !important;
+}
+
+[data-theme="tactical-hazard"] .text-blue-300,
+[data-theme="tactical-hazard"] .text-cyan-300 {
+  color: #FEF08A !important;
+}
+
+[data-theme="tactical-hazard"] .bg-blue-600\/15 {
+  background-color: rgba(250, 204, 21, 0.15) !important;
+  color: #FACC15 !important;
+}
+
+[data-theme="tactical-hazard"] .border-blue-500\/30,
+[data-theme="tactical-hazard"] .border-blue-500\/40,
+[data-theme="tactical-hazard"] .border-blue-500 {
+  border-color: rgba(250, 204, 21, 0.45) !important;
+}
+
+[data-theme="tactical-hazard"] .bg-blue-950\/80,
+[data-theme="tactical-hazard"] .bg-blue-950\/40 {
+  background-color: #1A190A !important;
+  border-color: #FACC15 !important;
+  color: #FFFFFF !important;
+}
+
+/* Tactile Range Sliders for Hazard */
+[data-theme="tactical-hazard"] input[type="range"] {
+  accent-color: #FACC15 !important;
+}
+
+/* Custom Scrollbars for Hazard Rack Feel */
+[data-theme="tactical-hazard"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+[data-theme="tactical-hazard"] ::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+[data-theme="tactical-hazard"] ::-webkit-scrollbar-thumb {
+  background: #282830;
+  border-radius: 4px;
+}
+[data-theme="tactical-hazard"] ::-webkit-scrollbar-thumb:hover {
+  background: #FACC15;
+}
+
+/* ==========================================================================
+   ANIMATIONS & EFFECTS
+   ========================================================================== */
+
+/* Emergency Red Strobe Animation */
+@keyframes emergency-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.7), inset 0 0 15px rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.9);
+  }
+  50% {
+    box-shadow: 0 0 55px rgba(239, 68, 68, 1), inset 0 0 30px rgba(239, 68, 68, 0.6);
+    border-color: rgba(254, 202, 202, 1);
+  }
+}
+
+.animate-emergency-strobe {
+  animation: emergency-pulse-glow 1s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Circuit Cable Electric Current Flow Animation */
+@keyframes electric-flow {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cable-flow-active {
+  stroke-dasharray: 6, 6;
+  animation: electric-flow 0.8s linear infinite;
+}
+
+.cable-flow-fast {
+  stroke-dasharray: 4, 4;
+  animation: electric-flow 0.4s linear infinite;
+}
+
+/* Radar Sweep Animation */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 4s linear infinite;
+  transform-origin: center;
+}
+
+/* Subtle Floating Animation */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -4px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease-in-out infinite;
+}
